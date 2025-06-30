@@ -1,0 +1,133 @@
+body {
+  font-family: 'Segoe UI', Arial, sans-serif;
+  margin: 0;
+  min-height: 100vh;
+  background: #f6f8fc;
+  overflow-x: hidden;
+  transition: background 0.7s;
+}
+.centered {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 85vh;
+}
+#bgAnim {
+  position: fixed;
+  left: 0; top: 0;
+  width: 100vw; height: 100vh;
+  z-index: 0;
+  pointer-events: none;
+}
+.box {
+  background: rgba(255,255,255,0.93);
+  border-radius: 16px;
+  box-shadow: 0 2px 24px 0 #b9e0ff88, 0 0 0 2px #d0e8ff inset;
+  padding: 28px 24px 18px 24px;
+  min-width: 300px;
+  max-width: 340px;
+  transition: box-shadow 0.3s;
+  animation: popinbox 0.7s;
+}
+@keyframes popinbox { 0% { opacity:0; transform: scale(0.95);} 100% { opacity: 1; transform: scale(1);} }
+.box.glow { box-shadow: 0 0 24px 6px #a0bfff, 0 0 0 2px #d0e8ff inset; }
+h2 { color: #5c7cfa; margin-top: 0; }
+.topbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 22px 24px 10px 24px;
+  font-size: 1.1em;
+  background: rgba(255,255,255,0.7);
+  border-radius: 0 0 22px 22px;
+  box-shadow: 0 2px 18px #dbeafe44;
+  margin-bottom: 10px;
+}
+.logout-btn {
+  background: #ffeaea;
+  color: #b22222;
+  border: 1px solid #fdc7c7;
+  border-radius: 7px;
+  padding: 8px 18px;
+  font-size: 1em;
+  cursor: pointer;
+}
+.add-btn {
+  background: #d0eaff;
+  border: 1px solid #a6d3ff;
+  border-radius: 7px;
+  font-size: 1.1em;
+  padding: 8px 22px;
+  margin: 0 0 0 18px;
+  cursor: pointer;
+  transition: background .2s;
+}
+.add-btn:hover { background: #b8f2e6; }
+.notes-header {
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 0 24px 10px 24px;
+}
+.notes-list {
+  display: flex; flex-wrap: wrap; gap: 18px;
+  padding: 0 28px 32px 28px;
+}
+.note {
+  min-width: 220px; max-width: 300px;
+  min-height: 110px;
+  background: #fffbe7;
+  border-radius: 14px;
+  margin: 0 6px 10px 0;
+  padding: 18px 16px 14px 16px;
+  box-shadow: 0 2px 12px #eee;
+  position: relative;
+  word-break: break-word;
+  font-size: 1.08em;
+  transition: box-shadow .2s, transform .16s;
+  animation: noteIn .7s;
+}
+@keyframes noteIn {0%{opacity:0;transform:scale(0.95);}100%{opacity:1;transform:scale(1);}}
+.note .note-actions {
+  position: absolute; right: 9px; top: 8px;
+  display: flex; gap: 7px;
+}
+.note .edit-btn, .note .del-btn {
+  background: none; border: none; cursor: pointer; font-size: 1.1em; padding: 2px 5px;
+  opacity: 0.7; border-radius: 4px;
+  transition: background .1s, opacity .15s;
+}
+.note .edit-btn:hover { background: #b8f2e6; opacity: 1;}
+.note .del-btn:hover { background: #ffd6a5; opacity: 1;}
+.modal {
+  position: fixed; z-index: 13; left:0; top:0; width:100vw; height:100vh;
+  background: rgba(26,34,53,0.14);
+  display: flex; justify-content: center; align-items: center;
+  animation: fadein .25s;
+}
+@keyframes fadein {0%{opacity:0;}100%{opacity:1;}}
+.modal-content {
+  background: #fff; border-radius: 13px; padding: 26px 24px 18px 24px; min-width: 270px; max-width: 340px;
+  box-shadow: 0 2px 32px #b9e0ff88;
+  position: relative;
+  animation: popinbox .3s;
+}
+.modal-content .close {
+  position: absolute; right: 14px; top: 10px; font-size: 1.7em; color: #d0d0d5; cursor: pointer;
+}
+textarea#noteText {
+  width: 95%; min-height: 60px; font-size: 1.12em;
+  border-radius: 7px; border: 1px solid #b8f2e6; padding: 8px 10px; margin-bottom: 12px;
+  background: #f6f8fc;
+}
+.color-row { display: flex; align-items: center; gap: 10px; margin-bottom: 10px; }
+.color-btn {
+  width: 26px; height: 26px; border-radius: 50%; border: 2px solid #fff; outline: 1.5px solid #d0d0d5;
+  cursor: pointer; margin: 0 2px; transition: outline .2s;
+}
+.color-btn.selected, .color-btn:focus { outline: 2.5px solid #5c7cfa; }
+.save-btn {
+  background: #a6d3ff; border: none; border-radius: 7px; color: #444;
+  padding: 8px 26px; font-size: 1.08em; cursor: pointer; margin-top: 8px;
+}
+.save-btn:hover { background: #b8f2e6; }
+::-webkit-scrollbar { width: 10px; background: #f6f8fc;}
+::-webkit-scrollbar-thumb { background: #b8f2e6; border-radius: 7px; }
